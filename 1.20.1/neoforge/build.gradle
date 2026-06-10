@@ -1,0 +1,66 @@
+plugins {
+	id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = 'smoothlight-neoforge'
+}
+
+repositories {
+	maven {
+		name = 'NeoForged'
+		url = 'https://maven.neoforged.net/releases'
+	}
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+minecraft {
+	mappings channel: 'official', version: project.minecraft_version
+
+	runs {
+		client {
+			workingDirectory project.file('run')
+			args '-mixin.config=smoothlight.mixins.json'
+			jvmArg '-Dfile.encoding=UTF-8'
+			mods {
+				smoothlight {
+					source sourceSets.main
+				}
+			}
+		}
+		server {
+			workingDirectory project.file('run')
+			args '-mixin.config=smoothlight.mixins.json'
+			jvmArg '-Dfile.encoding=UTF-8'
+			mods {
+				smoothlight {
+					source sourceSets.main
+				}
+			}
+		}
+	}
+}
+
+dependencies {
+	minecraft "net.neoforged:forge:${project.minecraft_version}-${project.neoforge_version}"
+}
+
+jar {
+	manifest {
+		attributes 'MixinConfigs': 'smoothlight.mixins.json'
+	}
+}
+
+sourceSets {
+	main {
+		output.resourcesDir = java.destinationDirectory.get().asFile
+	}
+}

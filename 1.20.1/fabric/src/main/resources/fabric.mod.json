@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "smoothlight",
+	"version": "${version}",
+	"name": "Smooth Light",
+	"description": "Плавно тушит свет после разрушения источника света вместо мгновенного исчезновения.",
+	"authors": [],
+	"contact": {},
+	"license": "CC0-1.0",
+	"icon": "assets/smoothlight/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.smoothlight.SmoothLight"
+		],
+		"client": [
+			"com.smoothlight.client.SmoothLightClient"
+		]
+	},
+	"mixins": [
+		"smoothlight.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.0",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
