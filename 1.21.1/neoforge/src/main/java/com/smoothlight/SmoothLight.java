@@ -20,7 +20,14 @@ public class SmoothLight {
         NeoForge.EVENT_BUS.addListener((ServerStoppedEvent event) ->
                 LightTransitions.drop(level -> level instanceof ServerLevel));
         if (FMLEnvironment.dist.isClient()) {
+            ClientInit.init();
+        }
+    }
+
+    private static class ClientInit {
+        private static void init() {
             SmoothLightClient.init();
         }
     }
 }
+

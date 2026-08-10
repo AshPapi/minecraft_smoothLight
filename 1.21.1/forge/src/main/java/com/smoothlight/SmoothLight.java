@@ -2,12 +2,12 @@ package com.smoothlight;
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.loading.FMLEnvironment;
-import net.minecraftforge.server.ServerLifecycleHooks;
 
 @Mod(SmoothLight.MOD_ID)
 public class SmoothLight {
@@ -18,7 +18,7 @@ public class SmoothLight {
             if (event.phase != TickEvent.Phase.END) {
                 return;
             }
-            MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
+            MinecraftServer server = event.getServer();
             if (server == null) {
                 return;
             }
@@ -28,8 +28,8 @@ public class SmoothLight {
         });
         MinecraftForge.EVENT_BUS.addListener((ServerStoppedEvent event) ->
                 LightTransitions.drop(level -> level instanceof ServerLevel));
-        if (FMLEnvironment.dist.isClient()) {
-            SmoothLightClient.init();
-        }
+
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> SmoothLightClient::init);
     }
 }
+

@@ -3,6 +3,7 @@
 	"minVersion": "0.8.5",
 	"package": "com.smoothlight.mixin",
 	"compatibilityLevel": "JAVA_21",
+	"refmap": "smoothlight.refmap.json",
 	"mixins": [
 		"BlockLightEngineMixin",
 		"LevelChunkMixin",
