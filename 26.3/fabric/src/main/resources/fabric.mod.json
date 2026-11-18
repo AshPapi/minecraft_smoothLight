@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "smoothlight",
+	"version": "${version}",
+	"name": "Smooth Light",
+	"description": "Makes all light changes smooth: light sources fade in and out gradually instead of switching instantly.",
+	"authors": [
+		"AshPapi"
+	],
+	"contact": {},
+	"license": "MIT",
+	"icon": "assets/smoothlight/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.smoothlight.SmoothLight"
+		],
+		"client": [
+			"com.smoothlight.client.SmoothLightClient"
+		]
+	},
+	"mixins": [
+		"smoothlight.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.20.0",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

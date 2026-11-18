@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="smoothlight"
+version="1.0.0"
+displayName="Smooth Light"
+description='''Makes all light changes smooth: light sources fade in and out gradually instead of switching instantly.'''
+logoFile="icon.png"
+authors="AshPapi"
+
+[[dependencies.smoothlight]]
+modId="neoforge"
+type="required"
+versionRange="[26.3.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.smoothlight]]
+modId="minecraft"
+type="required"
+versionRange="[26.3,27.0)"
+ordering="NONE"
+side="BOTH"
+
+[[mixins]]
+config="smoothlight.mixins.json"
